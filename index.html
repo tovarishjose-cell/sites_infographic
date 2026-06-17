@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Инфографика</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000000;
+      text-align: center;
+      overflow-y: auto;
+	  justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .map-container {
+      position: relative;
+      width: 1000px;
+      height: 1600px;
+      background: #000;
+    }
+
+    .map-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .point {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+      background-size: auto auto;
+      background-repeat: no-repeat;
+      background-position: 0% 0%;
+    }
+
+    .point:hover {
+      z-index: 0;
+    }
+
+    .type-1 {
+      background-image: url('./blank.png');
+    }
+
+    .type-2 {
+      background-image: url('./blank.png');
+    }
+
+    .type-3 {
+      background-image: url('./blank.png');
+    }
+
+    .type-4 {
+      background-image: url('./blank.png');
+    }
+	
+	 .type-5 {
+      background-image: url('./blank.png');
+    }
+	
+	 .type-6 {
+      background-image: url('./blank.png');
+    }
+
+	 .type-7 {
+      background-image: url('./blank.png');
+    }
+	
+	 .type-8 {
+      background-image: url('./blank.png');
+    }
+	
+	 .type-9 {
+      background-image: url('./blank.png');
+    }
+	
+    .tooltip {
+      position: absolute;
+      background: rgba(0,0,0,0.85);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 18px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      white-space: pre-line;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="map-container" id="map">
+    <img src="./infro.png" alt="Инфографика" class="map-image" />
+
+    <div class="tooltip" id="tooltip"></div>
+  </div>
+
+  <script>
+    const map = document.getElementById('map');
+    const tooltip = document.getElementById('tooltip');
+
+    const points = [
+      {
+        id: 1,
+        x: 21,
+        y: 17,
+        type: 'type-1',
+        title: 
+		'Проект по зарубежной истории - истории древнего мира'
+      },
+      {
+        id: 2,
+        x: 465,
+        y: 775,
+        type: 'type-2',
+        title: 'Мне кажется, что Октавиан Август был необходимым для того времени человеком'
+      },
+      {
+        id: 3,
+        x: 649,
+        y: 789,
+        type: 'type-3',
+        title: 'Мне кажется, что Октавиан Август был тираном'
+      },
+      {
+        id: 4,
+        x: 855,
+        y: 754,
+        type: 'type-4',
+        title: 'Мне кажется, что Октавиан Август был справедливым правителем'
+		},
+      {
+        id: 5,
+        x: 158,
+        y: 819,
+        type: 'type-5',
+        title: 'Облако слов: источник, Октавиан Август, деяния, сопоставление, "переходный" Рим, величие'
+      },
+      {
+        id: 6,
+        x: 319,
+        y: 1019,
+        type: 'type-6',
+        title: 'Республиканский период - приход Августа ко власти'
+	  },
+      {
+        id: 7,
+        x: 319,
+        y: 1199,
+        type: 'type-7',
+        title: 'Период "принципата" Августа'
+      },
+      {
+        id: 8,
+        x: 319,
+        y: 1377,
+        type: 'type-8',
+        title: 'Имперский период - конец правления Августа'
+	  },
+      {
+        id: 9,
+        x: 634,
+        y: 1018,
+        type: 'type-9',
+        title: 'Сравнительная таблица информации из "Деяния Божественного Августа" и реальных сведений'
+      }
+    ];
+
+    function createPoint(pointData) {
+      const point = document.createElement('div');
+
+      point.classList.add('point', pointData.type);
+
+      point.style.left = `${pointData.x}px`;
+      point.style.top = `${pointData.y}px`;
+
+      point.addEventListener('mouseenter', (e) => {
+        tooltip.textContent = pointData.title;
+        tooltip.style.opacity = '1';
+      });
+
+      point.addEventListener('mousemove', (e) => {
+        const rect = map.getBoundingClientRect();
+
+        tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+        tooltip.style.top = `${e.clientY - rect.top + 15}px`;
+      });
+
+      point.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+
+      map.appendChild(point);
+    }
+
+    points.forEach(createPoint);
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
